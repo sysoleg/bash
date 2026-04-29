@@ -2,5 +2,11 @@
   "public": true,
   "functions": {
     "api/*.sh": { "runtime": "vercel-dev-runtime@0.0.4" }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/hello-binary.sh",
+      "schedule": "0 2 * * *"
+    }
+  ]
 }
