@@ -1,7 +1,7 @@
-build() {
+#build() {
 	# Copy the database from the project root into the function bundle
 	#cp "$WORK_PATH/data.db" .
-}
+#}
 
 handler() {
 	# Define a writable location for the database
