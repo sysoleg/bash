@@ -23,6 +23,7 @@ const TMP = tmpdir();
 fs.chmodSync(join(__dirname, 'build.sh'), 0o755);
 fs.chmodSync(join(__dirname, 'import.sh'), 0o755);
 fs.chmodSync(join(__dirname, 'bootstrap'), 0o755);
+fs.chmodSync(join(__dirname, 'hello'), 0o755);
 
 const bootstrapPromise = FileFsRef.fromFsPath({
 	fsPath: join(__dirname, 'bootstrap'),
@@ -32,6 +33,9 @@ const runtimePromise = FileFsRef.fromFsPath({
 });
 const importPromise = FileFsRef.fromFsPath({
 	fsPath: join(__dirname, 'import.sh'),
+});
+const helloPromise = FileFsRef.fromFsPath({
+	fsPath: join(__dirname, 'hello'),
 });
 const curlPromise = fetch(
 	'https://github.com/dtschan/curl-static/releases/download/v7.63.0/curl'
@@ -133,6 +137,7 @@ export const build: BuildV3 = async ({
 		'.import-cache/bin/import': await importPromise,
 		'.import-cache/bin/curl': await curlPromise,
 		'.import-cache/bin/jq': await jqPromise,
+		'.import-cache/bin/hello': await helloPromise,
 		// For now only the entrypoint file is copied into the lambda
 		[entrypoint]: files[entrypoint],
 	};
