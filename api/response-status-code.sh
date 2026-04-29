@@ -1,4 +1,5 @@
 handler() {
-	http_response_code 500
-	echo "Internal Server Error from Bash!"
+	sleep 600
+	http_response_code 404
+	echo "404 from Bash!"
 }
